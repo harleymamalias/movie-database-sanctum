@@ -17,20 +17,24 @@ class Movie extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function directors(){
-        return $this->belongsToMany(Director::class);
+    public function directors()
+    {
+        return $this->belongsToMany(Director::class, 'director_movie', 'mov_id', 'dir_id');
     }
 
-    public function actrors(){
-        return $this->belongsToMany(Actor::class);
+    public function actors()
+    {
+        return $this->belongsToMany(Actor::class, 'actor_movie', 'mov_id', 'act_id');
     }
 
-    public function genres(){
-        return $this->belongsToMany(Genre::class);
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class, 'genre_movie', 'mov_id', 'gen_id');
     }
 
-    public function ratings(){
-        return $this->hasMany(Rating::class);
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'mov_id', 'mov_id');
     }
 
 }

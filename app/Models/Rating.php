@@ -14,7 +14,8 @@ class Rating extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function reviewer(){
-        return $this->hasOne(Reviewer::class);
+    public function reviewer()
+    {
+        return $this->belongsTo(Reviewer::class, 'rev_id', 'rev_id');
     }
 }

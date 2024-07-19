@@ -13,7 +13,8 @@ class Actor extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function movies(){
-        return $this->belongsToMany(Movie::class);
+    public function movies()
+    {
+        return $this->belongsToMany(Movie::class, 'actor_movie', 'act_id', 'mov_id');
     }
 }
